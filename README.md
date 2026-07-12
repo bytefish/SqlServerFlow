@@ -4,7 +4,7 @@ SqlServerFlow is a simple durable execution workflow system, which is entirely b
 
 The SQL Script for creating the SqlServerFlow Database Schema is available here:
 
-* []()
+* [https://github.com/bytefish/SqlServerFlow/blob/main/sql/ssf.sql](https://github.com/bytefish/SqlServerFlow/blob/main/sql/ssf.sql)
 
 ## 1. Setup ##
 
