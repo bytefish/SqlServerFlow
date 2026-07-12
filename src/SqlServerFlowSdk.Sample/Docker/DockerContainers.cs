@@ -10,7 +10,7 @@ namespace SqlServerFlowSdk.Sample.Docker
         public static MsSqlContainer SqlServerContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2022-latest")
             .WithName("sqlserver")
             .WithPassword("P@ssw0rd123!")
-            .WithBindMount(Path.Combine(AppContext.BaseDirectory, "Resources\\sql\\SqlServerFlow.sql"), "/var/opt/mssql/scripts/SqlServerFlow.sql")
+            .WithBindMount(Path.Combine(AppContext.BaseDirectory, "Resources\\sql\\ssf.sql"), "/var/opt/mssql/scripts/ssf.sql")
             .WithPortBinding(1433, 1433)
             .WithLogger(ConsoleLogger.Instance)
             .Build();
@@ -19,7 +19,7 @@ namespace SqlServerFlowSdk.Sample.Docker
         {
             await SqlServerContainer.StartAsync();
 
-            string scriptContent = await File.ReadAllTextAsync(Path.Combine(AppContext.BaseDirectory, "Resources\\sql\\SqlServerFlow.sql"));
+            string scriptContent = await File.ReadAllTextAsync(Path.Combine(AppContext.BaseDirectory, "Resources\\sql\\ssf.sql"));
 
             await SqlServerContainer.ExecScriptAsync(scriptContent);
         }
