@@ -31,7 +31,7 @@ public class SqlServerFlowIntegrationTests
     {
         // ARRANGE
 
-        // Build the SqlServerFlow Client directly with the ConnectionString (NpgsqlDataSource is removed)
+        // Build the SqlServerFlow Client directly with the ConnectionString
         ISqlServerFlow client = new SqlServerFlow(NullLogger<SqlServerFlow>.Instance, ConnectionString);
 
         // We use a TCS to signal when the background worker has actually finished the task
