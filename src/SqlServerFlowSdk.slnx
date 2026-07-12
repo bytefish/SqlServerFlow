@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../sql/ssf.sql" />
+    <File Path="Directory.Packages.props" />
+    <File Path="../LICENSE" />
+    <File Path="../README.md" />
+  </Folder>
+  <Project Path="SqlServerFlowSdk.AiSample/SqlServerFlowSdk.AiSample.csproj" />
+  <Project Path="SqlServerFlowSdk.Sample/SqlServerFlowSdk.Sample.csproj" />
+  <Project Path="SqlServerFlowSdk.Tests/SqlServerFlowSdk.Tests.csproj" />
+  <Project Path="SqlServerFlowSdk/SqlServerFlowSdk.csproj" />
+</Solution>
