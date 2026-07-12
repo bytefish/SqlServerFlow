@@ -168,7 +168,6 @@ public class SqlServerFlowDatabase
                 State = ParseJson(reader, 1),
                 Status = reader.GetString(2),
                 OwnerRunId = reader.IsDBNull(3) ? null : reader.GetGuid(3).ToString(),
-                // T-SQL nutzt DATETIMEOFFSET, daher lesen wir hier explizit GetDateTimeOffset
                 UpdatedAt = reader.GetDateTimeOffset(4).UtcDateTime
             });
         }
@@ -183,13 +182,12 @@ public class SqlServerFlowDatabase
         AddParam(cmd, "@p_queue_name", queue);
         AddParam(cmd, "@p_task_id", Guid.Parse(taskId));
         AddParam(cmd, "@p_step_name", checkpointName);
-        AddParam(cmd, "@p_include_pending", 0); // BIT 0 entspricht false
+        AddParam(cmd, "@p_include_pending", 0);
 
         using SqlDataReader reader = await cmd.ExecuteReaderAsync(cancellationToken).ConfigureAwait(false);
 
         if (await reader.ReadAsync(cancellationToken).ConfigureAwait(false))
         {
-            // State befindet sich im Index 1 des Resultsets (Name, State, Status, Owner, UpdatedAt)
             return ParseJson(reader, 1);
         }
 
